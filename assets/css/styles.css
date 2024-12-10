@@ -1,5 +1,18 @@
 
 
 form {
-    width: 350px;
+    width: 450px;
+}
+
+#clientes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 20px;
+    justify-items: center;
+}
+
+#clientes .card {
+    width: 100%;
 }
