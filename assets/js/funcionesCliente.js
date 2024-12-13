@@ -49,3 +49,23 @@ window.eliminarCliente = function (id) {
     }
   });
 };
+
+// paginacion
+let pagina = 1;
+const contador = document.querySelector("#paginacion h2");
+
+window.paginaSiguiente = function () {
+  pagina++;
+  contador.innerText = pagina;
+  cargarDatosCliente(pagina);
+}
+
+window.paginaAnterior = function () {
+  if (pagina - 1 === 0) {
+    Swal.fire("Error", "Esta es la primera pagina", "error");
+  } else {
+    pagina--;
+    contador.innerText = pagina;
+    cargarDatosCliente(pagina);
+  }
+}

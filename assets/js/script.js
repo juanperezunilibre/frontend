@@ -38,14 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-export function cargarDatosCliente() {
+export function cargarDatosCliente(pagina = 1) {
   const tbody = document.querySelector("tbody");
   tbody.innerHTML = "";
   // peticion a localhost:3000/clientes del server de node
-  api.get("/clientes").then(({ data }) => {
+  api.get(`/clientes?page=${pagina}&perPage=9`).then(({ data }) => {
      
     for (const cliente of data) {
-      
+          
       const dateConverted = dayjs(cliente.fecha_nacimiento).format("DD-MM-YYYY");
 
       tbody.innerHTML += `
