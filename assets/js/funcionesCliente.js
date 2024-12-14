@@ -1,4 +1,4 @@
-import {cargarDatosCliente} from "./script.js";
+import {cargarDatosCliente, modal} from "./script.js";
 
 const form = document.querySelector("form");
 
@@ -7,11 +7,11 @@ window.editarCliente = function (id) {
   fetch("http://localhost:3000/cliente/" + id)
     .then((response) => response.json())
     .then((data) => {
-      const { editar, documento, nombre, apellidos, email, fecha_nacimiento } =
+      const { editar, documento, nombre, apellidos, email, fecha_nacimiento, image } =
         form.elements;
 
       const dateConverted = dayjs(data.fecha_nacimiento).format("YYYY-MM-DD");
-
+      
       // asignar los valores a los campos del formulario
       editar.value = data.id;
       documento.value = data.documento;
@@ -19,6 +19,9 @@ window.editarCliente = function (id) {
       apellidos.value = data.apellidos;
       email.value = data.email;
       fecha_nacimiento.value = dateConverted;
+      image.value = data.image;
+      
+      modal.show()
     });
 };
 
